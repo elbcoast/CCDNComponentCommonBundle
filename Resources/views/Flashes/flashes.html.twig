@@ -1,7 +1,9 @@
 {%- spaceless -%}
-	{%- for key, message in app.session.getFlashes() -%}
-		<div class="alert {{ alert_key(key) -}}">
-		    {{- message |trans -}}
-		</div>
+	{%- for key, messages in app.session.flashbag.all() -%}
+	    {%- for message in messages -%}
+    		<div class="alert {{ alert_key(key) -}}">
+    		    {{- message |trans -}}
+    		</div>
+		{%- endfor -%}
 	{%- endfor -%}
 {%- endspaceless -%}
